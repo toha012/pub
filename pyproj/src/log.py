@@ -19,7 +19,7 @@ def error(msg):
     sys.exit('[' + str_red('X') + '] ' + msg)
 
 def warn(msg):
-    print('[' + str_magenta('!') + '] ' + str_magenta(msg))
+    print('[' + str_magenta('!') + '] ' + msg)
 
-def log(msg):
-    print('[' + str_blue('*') + '] ' + msg, flush=True)
+def info(msg):
+    print('[' + str_blue('+') + '] ' + msg, flush=True)
