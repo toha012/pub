@@ -1,4 +1,13 @@
 import sys
+import enum
+
+from src.context import context
+
+class LOG_LEVEL(enum.IntEnum):
+    DEBUG   = enum.auto()
+    INFO    = enum.auto()
+    WARNING = enum.auto()
+    ERROR   = enum.auto()
 
 def str_red(s):
     return f'\033[31m{s}\033[0m'
@@ -15,11 +24,18 @@ def str_blue(s):
 def str_magenta(s):
     return f'\033[35m{s}\033[0m'
 
-def error(msg):
-    sys.exit('[' + str_red('X') + '] ' + msg)
-
-def warn(msg):
-    print('[' + str_magenta('!') + '] ' + msg)
+def debug(msg):
+    if context.log_level <= LOG_LEVEL.DEBUG:
+        print('[' + '*' + ']' + msg)
 
 def info(msg):
-    print('[' + str_blue('+') + '] ' + msg, flush=True)
+    if context.log_level <= LOG_LEVEL.INFO:
+        print('[' + str_blue('+') + '] ' + msg, flush=True)
+
+def warn(msg):
+    if context.log_level <= LOG_LEVEL.WARNING:
+        print('[' + str_magenta('!') + '] ' + msg)
+
+def error(msg):
+    if context.log_level <= LOG_LEVEL.ERROR:
+        sys.exit('[' + str_red('X') + '] ' + msg)
