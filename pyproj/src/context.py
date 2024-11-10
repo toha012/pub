@@ -1,4 +1,4 @@
-from src.log import LOG_LEVEL
+from src.log_level import LOG_LEVEL
 
 class Context():
     def __init__(self) -> None:

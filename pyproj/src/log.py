@@ -1,13 +1,7 @@
 import sys
-import enum
 
 from src.context import context
-
-class LOG_LEVEL(enum.IntEnum):
-    DEBUG   = enum.auto()
-    INFO    = enum.auto()
-    WARNING = enum.auto()
-    ERROR   = enum.auto()
+from src.log_level import LOG_LEVEL
 
 def str_red(s):
     return f'\033[31m{s}\033[0m'
@@ -26,7 +20,7 @@ def str_magenta(s):
 
 def debug(msg):
     if context.log_level <= LOG_LEVEL.DEBUG:
-        print('[' + '*' + ']' + msg)
+        print('[' + '*' + '] ' + msg)
 
 def info(msg):
     if context.log_level <= LOG_LEVEL.INFO:
