@@ -35,8 +35,13 @@ function la() {
     ls -Force $args[0]
 }
 
-function weather() {
-    curl "https://wttr.in"
+function weather($location) {
+    if ([string]::IsNullOrEmpty($location)) {
+        $location = "osaka"
+    } else {
+        $repoPath = $repo
+    }
+    curl -m 4 "https://ja.wttr.in/${location}?F"
 }
 
 # function file() {
